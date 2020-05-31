@@ -8,7 +8,7 @@ fn main() {
 
     for arg in args {
 
-        for entry in walkdir::WalkDir::new(arg).into_iter().filter_map(Result::ok).filter(|e| !e.file_type().is_dir()); {
+        for entry in walkdir::WalkDir::new(arg).into_iter().filter_map(Result::ok).filter(|e| !e.file_type().is_dir()) {
             f = String::from(entry.path().to_string_lossy());
             let mut cmd = Command::new("sh");
             cmd.arg("-c").arg(format!("md5sum \"{}\"", f));
